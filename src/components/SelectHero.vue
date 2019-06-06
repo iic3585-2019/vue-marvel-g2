@@ -2,12 +2,9 @@
   <div>
     <h3> Select your hero </h3>
     <select v-on:change="selectedHero($event)">
-      <option value="Spider-Man">Spider Man</option>
-      <option value="Ant-Man (Scott Lang)">Ant Man</option>
-      <option value="Captain America">Captain America</option>
-      <option value="Wolverine">Wolverine</option>
-      <option value="Thor">Thor</option>
+      <option v-for="hero in this.$store.state.heroes" :value="hero">{{hero}}</option>
     </select>
+    <button v-on:click="destroyHeores()"></button>
     <ImageHero :image="this.hero" />
   </div>
 </template>
@@ -28,6 +25,13 @@ export default {
       getSpecificHero(value).then(image =>{
         this.hero = image;
       })
+    },
+    destroyHeores(){
+      const numberDestroy = this.$store.state.heroes.length / 2;
+      for (let i = 0; i < numberDestroy; i++) {
+        const index = Math.floor(Math.random() * this.$store.state.heroes.length);
+        this.$store.state.heroes.splice(index, 1);      
+      }
     }
   },
   components: {
