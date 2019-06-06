@@ -1,36 +1,43 @@
 <template>
   <div>
-    <h3> Select your hero </h3>
+    <h3>Select your hero</h3>
     <select v-on:change="selectedHero($event)">
-      <option v-for="hero in this.$store.state.heroes" :value="hero">{{hero}}</option>
+      <option
+        v-for="hero in this.$store.state.heroes"
+        v-bind:key="hero.id"
+        :value="hero"
+        >{{ hero }}</option
+      >
     </select>
-    <button v-on:click="destroyHeores()"></button>
+    <button v-on:click="destroyHeores()">Thanos's Power</button>
     <ImageHero :image="this.hero" />
   </div>
 </template>
 
 <script>
-import {getSpecificHero} from './../API/getHero';
-import ImageHero from './ImageHero';
+import { getSpecificHero } from "./../API/getHero";
+import ImageHero from "./ImageHero";
 export default {
   name: "SelectHero",
   data() {
     return {
       hero: null
-    }
+    };
   },
   methods: {
-    selectedHero(e){
+    selectedHero(e) {
       const value = e.target.value;
-      getSpecificHero(value).then(image =>{
+      getSpecificHero(value).then(image => {
         this.hero = image;
-      })
+      });
     },
-    destroyHeores(){
+    destroyHeores() {
       const numberDestroy = this.$store.state.heroes.length / 2;
       for (let i = 0; i < numberDestroy; i++) {
-        const index = Math.floor(Math.random() * this.$store.state.heroes.length);
-        this.$store.state.heroes.splice(index, 1);      
+        const index = Math.floor(
+          Math.random() * this.$store.state.heroes.length
+        );
+        this.$store.state.heroes.splice(index, 1);
       }
     }
   },

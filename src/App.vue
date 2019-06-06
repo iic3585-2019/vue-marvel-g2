@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <SelectHero/>
+    <SelectHero />
   </div>
 </template>
 
