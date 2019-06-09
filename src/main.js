@@ -4,6 +4,15 @@ import store from "./store/index";
 import router from "./router";
 import "./registerServiceWorker";
 
+// External modules:
+// - Anime (https://github.com/juliangarnier/anime)
+import anime from "animejs";
+Vue.prototype.$a = anime;
+
+// - Lodash (https://github.com/lodash/lodash)
+import _ from "lodash";
+Vue.prototype.$_ = _;
+
 Vue.config.productionTip = false;
 
 new Vue({
