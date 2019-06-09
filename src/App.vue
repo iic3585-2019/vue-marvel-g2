@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <SelectHero />
+    <SelectPlayers />
   </div>
 </template>
 
 <script>
-import SelectHero from "./components/SelectHero.vue";
+import SelectPlayers from "./components/SelectPlayers.vue";
 
 export default {
   name: "app",
   components: {
-    SelectHero
+    SelectPlayers
   }
 };
 </script>
