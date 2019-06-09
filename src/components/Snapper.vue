@@ -1,16 +1,18 @@
 <template>
-  <div class="snap">
-    <div v-show="isSnapping" class="snap__frames">
+  <div class="snapper">
+    <div v-show="isSnapping" class="snapper__frames">
       <img
         v-for="frame in 3"
         :key="frame"
         ref="frames"
         :src="require(`@/assets/images/snap/frame-${frame}.jpg`)"
-        :class="`snap__frame snap__frame-${frame}`"
+        :class="`snapper__frame snapper__frame-${frame}`"
       />
     </div>
 
-    <button type="button" @click="play">Snapper</button>
+    <button type="button" class="snapper__button elevation-3" @click="play">
+      Snap
+    </button>
   </div>
 </template>
 
@@ -68,30 +70,48 @@ export default {
 <style lang="sass">
 $z-index: 2
 
-.snap__frames
+.snapper__frames
   display: flex
   align-items: center
   justify-content: center
 
-  background-color: rgba(0, 0, 0, 0.75)
+  background-color: rgba(0, 0, 0, 0.9)
 
   +p-absolute($z-index, 0, 0, 0, 0)
 
-.snap__frame
+.snapper__frame
   position: absolute
 
-.snap__frame-1
+.snapper__frame-1
   z-index: #{$z-index + 3}
 
   opacity: 0
 
-.snap__frame-2
+.snapper__frame-2
   z-index: #{$z-index + 2}
 
   opacity: 0
 
-.snap__frame-3
+.snapper__frame-3
   z-index: #{$z-index + 1}
 
   opacity: 0
+
+.snapper__button
+  font-family: 'Marvel';
+  font-size: 4rem
+  text-transform: uppercase;
+  color: $c-white
+
+  padding: 1rem 3rem
+
+  background-color: $c-primary
+  border-radius: 2px
+  border: 1px $c-black solid
+
+  transition: background-color .1s
+  cursor: pointer
+
+  &:hover
+    background-color: lighten($c-primary, 5%)
 </style>

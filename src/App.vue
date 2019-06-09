@@ -22,7 +22,7 @@ export default {
   width: 100vw
   height: 100vh
 
-  background-color: #ED1D24
+  background-color: $c-primary
 
 .app__background-image
   background-image: url(~@/assets/images/background.jpg)

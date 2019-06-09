@@ -27,10 +27,12 @@ export default {
   position: relative
 
   border-radius: 4px
+  border: 1px $c-black solid
 
   overflow: hidden
 
 .player__title
+  font-weight: normal
   text-align: center
   color: $c-white
 

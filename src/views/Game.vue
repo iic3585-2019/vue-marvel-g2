@@ -11,7 +11,7 @@
         v-for="(player, idx) in players"
         :key="player.id"
         :player="player"
-        :class="{ 'margin-l-0': idx > 0 }"
+        :class="{ 'margin-l-1': idx > 0 }"
       />
     </div>
   </div>
@@ -79,9 +79,9 @@ export default {
   height: 100vh
 
 .game-view__players
-  $padding: 16px
+  padding: 16px
 
   .player
-    height: calc(256px * 1.61)
     width: 256px
+    height: calc(256px * 1.61)
 </style>

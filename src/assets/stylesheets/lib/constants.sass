@@ -2,10 +2,7 @@
 $c-black: #000000
 $c-white: #FFFFFF
 
-$c-primary: #F13512
-$c-green: #4caf50
-$c-red: #f44336
-$c-yellow: #ffeb3b
+$c-primary: #ED1D24
 $c-gray-0: #D4D4D4
 $c-gray-1: #757575
 
@@ -41,7 +38,16 @@ $c-regional: #F13512
 // Fonts
 @import url(https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900)
 
-$f-family-primary: 'Lato'
+=font-face($family, $style, $weight, $path)
+  @font-face
+    font-family: $family
+    font-style: $style
+    font-weight: $weight
+    src: url('#{$path}.woff2') format('woff2'), url('#{$path}.woff') format('woff')
+
++font-face('Marvel', normal, normal, '~@/assets/fonts/Marvel-Regular')
+
+$f-family-primary: 'Marvel'
 
 $f-size-sm: 12px
 $f-size-md: 16px
