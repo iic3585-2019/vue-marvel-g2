@@ -8,42 +8,46 @@
           hero
         }}</option>
       </select>
-      <AppImageHero :image="hero" />
+      <!-- <AppImageHero :image="$store.state.playersModule.players[this.playerId].hero" /> -->
     </div>
     <div class="column">
       <h3>Select your name</h3>
-      <input />
+      <input @change="selectedName($event)" />
     </div>
   </div>
 </template>
 
 <script>
-import { getSpecificHero } from "./../API/getHero";
-import ImageHero from "./ImageHero";
+//import ImageHero from "./ImageHero";
 import { mapState } from "vuex";
 
 export default {
   name: "SelectHero",
   data() {
     return {
-      hero: null
+      name: null,
+      hero: { name: null, image: null }
     };
+  },
+  props: {
+    playerId: String
   },
   computed: {
     ...mapState({
-      heroes: state => state.heroesModule.heroes
+      heroes: state => state.heroesModule.heroes,
+      players: state => state.playersModule.players
     })
   },
   methods: {
-    selectedHero(e) {
-      const value = e.target.value;
-      getSpecificHero(value).then(image => {
-        this.hero = image;
-      });
+    selectedHero(event) {
+      this.$store.dispatch("setHero", { event, id: Number(this.playerId) });
+    },
+    selectedName(event) {
+      this.$store.dispatch("setName", { event, id: Number(this.playerId) });
     }
   },
   components: {
-    AppImageHero: ImageHero
+    //AppImageHero: ImageHero
   }
 };
 </script>

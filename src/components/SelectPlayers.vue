@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>Select the number of players</h3>
-    <select v-model="players">
+    <select v-model="players" @change="addPlayer(players)">
       <option
         v-for="player in numberPlayers"
         :key="player.id"
@@ -9,12 +9,14 @@
         >{{ player }}</option
       >
     </select>
-    <AppSelectHero v-for="index in players" :key="index" />
+    <AppSelectHero v-for="index in players" :key="index" playerId="1" />
+    <router-link to="/heroes" tag="button">heroes</router-link>
   </div>
 </template>
 
 <script>
 import SelectHero from "./SelectHero";
+import { mapActions } from "vuex";
 
 export default {
   name: "SelectPlayers",
@@ -23,6 +25,11 @@ export default {
       numberPlayers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
       players: 0
     };
+  },
+  methods: {
+    ...mapActions({
+      addPlayer: "addPlayer"
+    })
   },
   components: {
     AppSelectHero: SelectHero

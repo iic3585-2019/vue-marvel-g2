@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <SelectPlayers />
+    <router-view></router-view>
   </div>
 </template>
 
@@ -8,10 +8,7 @@
 import SelectPlayers from "./components/SelectPlayers.vue";
 
 export default {
-  name: "app",
-  components: {
-    SelectPlayers
-  }
+  name: "app"
 };
 </script>
 

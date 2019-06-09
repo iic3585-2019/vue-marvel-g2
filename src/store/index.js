@@ -5,6 +5,7 @@ Vue.use(Vuex);
 
 // Store modules
 import HeroesModule from "@/store/modules/Heroes";
+import PlayersModule from "@/store/modules/Players";
 
 export default new Vuex.Store({
   state: {},
@@ -14,6 +15,7 @@ export default new Vuex.Store({
   actions: {},
 
   modules: {
-    heroesModule: HeroesModule
+    heroesModule: HeroesModule,
+    playersModule: PlayersModule
   }
 });
