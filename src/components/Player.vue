@@ -36,6 +36,9 @@ export default {
   text-align: center
   color: $c-white
 
+  padding-right: 1rem
+  padding-left: 1rem
+
   background-color: rgba(0, 0, 0, .5)
 
   +p-relative(1)
