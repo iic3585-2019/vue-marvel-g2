@@ -1,15 +1,15 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import SelectHero from "./components/SelectHero";
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import SelectHero from './components/SelectHero';
 
 Vue.use(VueRouter);
 
 export default new VueRouter({
   routes: [
     {
-      path: "/",
-      name: "home",
-      component: SelectHero
-    }
-  ]
+      path: '/',
+      name: 'home',
+      component: SelectHero,
+    },
+  ],
 });
