@@ -1,7 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import SelectPlayers from './components/SelectPlayers';
-import GameView from './views/Game';
+
+// Components
+import HomeView from '@/views/Home';
+import GameView from '@/views/Game';
 
 Vue.use(VueRouter);
 
@@ -10,7 +12,7 @@ export default new VueRouter({
     {
       path: '/',
       name: 'home',
-      component: SelectPlayers,
+      component: HomeView,
     },
     {
       path: '/snap',

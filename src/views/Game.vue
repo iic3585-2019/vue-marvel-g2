@@ -1,13 +1,9 @@
 <template>
   <div class="game-view">
-    <AppSnapper
-      class="game-view__snapper"
-      @snap-begin="onSnapBegin"
-      @snap-complete="onSnapComplete"
-    />
+    <AppSnapper class="game-view__snapper" @snap-complete="onSnapComplete" />
 
     <div class="game-view__players d-flex-r d-flex-j-c">
-      <AppPlayer
+      <AppPlayerCard
         v-for="(player, idx) in players"
         :key="player.id"
         :player="player"
@@ -21,14 +17,14 @@
 import { mapState } from 'vuex';
 
 // Components
-import Player from '@/components/Player';
+import PlayerCard from '@/components/PlayerCard';
 import Snapper from '@/components/Snapper';
 
 export default {
   name: 'AppGameView',
 
   components: {
-    AppPlayer: Player,
+    AppPlayerCard: PlayerCard,
     AppSnapper: Snapper,
   },
 
@@ -39,9 +35,6 @@ export default {
   },
 
   methods: {
-    onSnapBegin() {
-    },
-
     onSnapComplete() {
       this.$store.dispatch('destroyHeroes');
     },
@@ -63,7 +56,7 @@ export default {
 .game-view__players
   padding: 16px
 
-  .player
+  .player-card
     width: 256px
     height: calc(256px * 1.61)
 </style>

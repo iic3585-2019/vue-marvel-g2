@@ -1,68 +1,72 @@
 <template>
-  <div>
+  <div class="select-hero">
     <div class="column">
       <h3>Select your hero</h3>
+
       <select @change="selectedHero($event)">
-        <option value="" selected="selected" disabled></option>
-        <option v-for="hero in heroes" :key="hero.id" :value="hero">{{
-          hero
-        }}</option>
+        <option value selected="selected" disabled />
+
+        <option v-for="hero in heroes" :key="hero.id" :value="hero">
+          {{ hero }}
+        </option>
       </select>
-      <AppImageHero v-if="players[this.playerId].hero" :image="players[this.playerId].hero.image" />
+
+      <AppHeroCard v-if="player.hero" :hero="player.hero" />
     </div>
+
     <div class="column">
       <h3>Select your name</h3>
+
       <input @change="selectedName($event)" />
     </div>
   </div>
 </template>
 
 <script>
-import ImageHero from "./ImageHero";
 import { mapState } from 'vuex';
+
+// Components
+import HeroCard from '@/components/HeroCard';
 
 export default {
   name: 'SelectHero',
-  props: {
-    playerId: Number,
+
+  components: {
+    AppHeroCard: HeroCard,
   },
+
+  props: {
+    playerId: {
+      type: Number,
+      required: true,
+    },
+  },
+
   computed: {
     ...mapState({
       heroes: state => state.heroesModule.heroes,
       players: state => state.playersModule.players,
     }),
+
+    player() {
+      return this.players[this.playerId];
+    },
   },
+
   methods: {
     async selectedHero(event) {
       await this.$store.dispatch('setHero', { event, id: this.playerId });
     },
+
     selectedName(event) {
       this.$store.dispatch('setName', { event, id: this.playerId });
     },
   },
-  components: {
-    AppImageHero: ImageHero
-  },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-.column {
-  display: inline-block;
-}
-h3 {
-  margin: 40px;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style lang="sass">
+.select-hero .hero-card
+  width: 256px
+  height: calc(256px * 1.61)
 </style>

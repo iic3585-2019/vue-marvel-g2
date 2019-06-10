@@ -77,7 +77,7 @@ $z-index: 2
 
   background-color: rgba(0, 0, 0, 0.9)
 
-  +p-absolute($z-index, 0, 0, 0, 0)
+  +p-fixed($z-index, 0, 0, 0, 0)
 
 .snapper__frame
   position: absolute

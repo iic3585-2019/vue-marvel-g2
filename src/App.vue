@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <div class="app__background-image" />
+
     <router-view class="app__router-view"></router-view>
   </div>
 </template>
@@ -18,13 +19,15 @@ export default {
 
   background-color: $c-primary
 
+  overflow-y: auto
+
 .app__background-image
   background-image: url(~@/assets/images/background.jpg)
 
   opacity: .25
 
   +background-image
-  +p-fixed(0, 0, 0, 0)
+  +p-fixed(0, 0, 0, 0, 0)
 
 .app__router-view
   position: relative
