@@ -8,7 +8,6 @@ export default {
   mutations: {
     'set-players'(state, payload) {
       state.players = payload.players;
-      console.log(state.players);
     },
     'set-loading'(state, loading) {
       state.loading = loading;
@@ -29,8 +28,6 @@ export default {
       const playersCopy = [...ctx.state.players];
       const { event, id } = payload;
       const value = event.target.value;
-      console.log(id);
-      console.log(playersCopy);
       playersCopy[id].hero = { name: value, image: null };
       const image = await getSpecificHero(value);
       playersCopy[id].hero.image = image;

@@ -40,11 +40,9 @@ export default {
 
   methods: {
     onSnapBegin() {
-      console.log('Wow');
     },
 
     onSnapComplete() {
-      console.log("ufff");
       this.$store.dispatch('destroyHeroes');
     },
   },

@@ -8,7 +8,7 @@
           hero
         }}</option>
       </select>
-      <!-- <AppImageHero :image="$store.state.playersModule.players[this.playerId].hero" /> -->
+      <AppImageHero v-if="players[this.playerId].hero" :image="players[this.playerId].hero.image" />
     </div>
     <div class="column">
       <h3>Select your name</h3>
@@ -18,37 +18,31 @@
 </template>
 
 <script>
-//import ImageHero from "./ImageHero";
-import { mapState } from "vuex";
+import ImageHero from "./ImageHero";
+import { mapState } from 'vuex';
 
 export default {
   name: 'SelectHero',
-  data() {
-    return {
-      name: null,
-      hero: { name: null, image: null }
-    };
-  },
   props: {
-    playerId: Number
+    playerId: Number,
   },
   computed: {
     ...mapState({
       heroes: state => state.heroesModule.heroes,
-      players: state => state.playersModule.players
-    })
+      players: state => state.playersModule.players,
+    }),
   },
   methods: {
     async selectedHero(event) {
-      await this.$store.dispatch("setHero", { event, id: this.playerId });
+      await this.$store.dispatch('setHero', { event, id: this.playerId });
     },
     selectedName(event) {
-      this.$store.dispatch("setName", { event, id: this.playerId });
-    }
+      this.$store.dispatch('setName', { event, id: this.playerId });
+    },
   },
   components: {
-    //AppImageHero: ImageHero
-  }
+    AppImageHero: ImageHero
+  },
 };
 </script>
 

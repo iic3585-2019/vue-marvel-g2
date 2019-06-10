@@ -9,31 +9,42 @@
         >{{ player }}</option
       >
     </select>
-    <AppSelectHero v-for="index in players" :key="index" :playerId="index - 1" />
-    <router-link to="/snap" tag="button" :disabled="$store.state.playersModule.loading">heroes</router-link>
+    <AppSelectHero
+      v-for="index in players"
+      :key="index"
+      :player-id="index - 1"
+    />
+    <router-link to="/snap" tag="button" :disabled="loading"
+      >heroes</router-link
+    >
   </div>
 </template>
 
 <script>
-import SelectHero from "./SelectHero";
-import { mapActions } from "vuex";
+import SelectHero from './SelectHero';
+import { mapState, mapActions } from 'vuex';
 
 export default {
-  name: "SelectPlayers",
+  name: 'SelectPlayers',
   data() {
     return {
       numberPlayers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-      players: 0
+      players: 0,
     };
+  },
+  computed: {
+    ...mapState({
+      loading: state => state.playersModule.loading,
+    }),
   },
   methods: {
     ...mapActions({
-      addPlayer: "addPlayer"
-    })
+      addPlayer: 'addPlayer',
+    }),
   },
   components: {
-    AppSelectHero: SelectHero
-  }
+    AppSelectHero: SelectHero,
+  },
 };
 </script>
 
