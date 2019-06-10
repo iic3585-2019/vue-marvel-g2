@@ -16,11 +16,11 @@ export default {
 
   actions: {
     addPlayer(ctx, iterations) {
-      const playersCopy = [...ctx.state.players];
+      const newPlayers = [];
       for (let i = 0; i < iterations; i++) {
-        playersCopy.push({ id: i, hero: null });
+        newPlayers.push({ id: i, hero: null });
       }
-      ctx.commit('set-players', { players: playersCopy });
+      ctx.commit('set-players', { players: newPlayers });
     },
 
     async setHero(ctx, payload) {
