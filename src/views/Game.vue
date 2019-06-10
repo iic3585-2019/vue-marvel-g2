@@ -53,9 +53,6 @@ export default {
   align-items: center
   justify-items: center
 
-  width: 100vw
-  height: 100vh
-
 .game-view__players
   padding: 16px
 

@@ -1,8 +1,12 @@
 <template>
-  <div class="home-view">
-    <h3>Select the number of players</h3>
+  <div class="home-view d-flex-c d-flex-centered">
+    <h1 class="home-view__title margin-b-2">Select the number of players</h1>
 
-    <select v-model="players" @change="setEmptyPlayers(players)">
+    <select
+      v-model="players"
+      class="margin-b-2"
+      @change="setEmptyPlayers(players)"
+    >
       <option
         v-for="player in numberPlayers"
         :key="player.id"
@@ -11,7 +15,7 @@
       >
     </select>
 
-    <div class="d-flex-r d-flex-centered">
+    <div class="d-flex-r d-flex-centered margin-b-2">
       <AppSelectHero
         v-for="idx in players"
         :key="idx"
@@ -20,8 +24,12 @@
       />
     </div>
 
-    <router-link to="/snap" tag="button" :disabled="loading"
-      >heroes</router-link
+    <router-link
+      to="/snap"
+      :disabled="loading"
+      tag="button"
+      class="home-view__button"
+      >Aceptar</router-link
     >
   </div>
 </template>
@@ -61,6 +69,34 @@ export default {
 </script>
 
 <style lang="sass">
+.home-view__title
+  font-family: 'Marvel';
+  text-transform: uppercase;
+  text-align: center;
+  color: $c-white
+
+  padding: .5em 1em
+
+  background-color: rgba(0, 0, 0, .5)
+
+.home-view__button
+  font-family: 'Marvel';
+  font-size: 2rem
+  text-transform: uppercase;
+  color: $c-white
+
+  padding: .5em 1em
+
+  background-color: $c-primary
+  border-radius: 2px
+  border: 1px $c-black solid
+
+  transition: background-color .1s
+  cursor: pointer
+
+  &:hover
+    background-color: lighten($c-primary, 5%)
+
 .home-view .select-hero
   width: 256px
   height: calc(256px * 1.61)

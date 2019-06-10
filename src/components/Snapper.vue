@@ -99,11 +99,11 @@ $z-index: 2
 
 .snapper__button
   font-family: 'Marvel';
-  font-size: 4rem
+  font-size: 2rem
   text-transform: uppercase;
   color: $c-white
 
-  padding: 1rem 3rem
+  padding: .5em 1em
 
   background-color: $c-primary
   border-radius: 2px

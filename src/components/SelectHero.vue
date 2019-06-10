@@ -5,7 +5,7 @@
       contenteditable="true"
       @input="selectedName($event)"
     >
-      {{ player.name || 'Tu nombre please' }}
+      {{ player.name || 'Choose your name' }}
     </h1>
 
     <select
