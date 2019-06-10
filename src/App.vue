@@ -1,17 +1,14 @@
 <template>
   <div id="app">
-    <SelectHero />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import SelectHero from "./components/SelectHero.vue";
+import SelectPlayers from "./components/SelectPlayers.vue";
 
 export default {
-  name: "app",
-  components: {
-    SelectHero
-  }
+  name: "app"
 };
 </script>
 
