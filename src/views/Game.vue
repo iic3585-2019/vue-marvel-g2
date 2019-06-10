@@ -2,14 +2,17 @@
   <div class="game-view">
     <AppSnapper class="game-view__snapper" @snap-complete="onSnapComplete" />
 
-    <div class="game-view__players d-flex-r d-flex-j-c">
+    <transition-group
+      name="fade"
+      class="game-view__players d-flex-r d-flex-j-c"
+    >
       <AppPlayerCard
         v-for="(player, idx) in players"
         :key="player.id"
         :player="player"
         :class="{ 'margin-l-1': idx > 0 }"
       />
-    </div>
+    </transition-group>
   </div>
 </template>
 
@@ -59,4 +62,10 @@ export default {
   .player-card
     width: 256px
     height: calc(256px * 1.61)
+
+.fade-enter-active, .fade-leave-active
+  transition: all 1s
+
+.fade-enter, .fade-leave-to
+  opacity: 0
 </style>
