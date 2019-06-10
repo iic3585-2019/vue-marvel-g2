@@ -6,10 +6,10 @@
 
 <script>
 export default {
-  name: "ImageHero",
+  name: 'ImageHero',
   props: {
-    image: String
-  }
+    image: String,
+  },
 };
 </script>
 

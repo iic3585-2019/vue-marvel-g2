@@ -22,7 +22,7 @@
 import { mapState } from "vuex";
 
 export default {
-  name: "SelectHero",
+  name: 'SelectHero',
   data() {
     return {
       name: null,
