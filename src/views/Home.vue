@@ -2,7 +2,7 @@
   <div class="home-view">
     <h3>Select the number of players</h3>
 
-    <select v-model="players" @change="addPlayer(players)">
+    <select v-model="players" @change="setEmptyPlayers(players)">
       <option
         v-for="player in numberPlayers"
         :key="player.id"
@@ -51,7 +51,7 @@ export default {
 
   methods: {
     ...mapActions({
-      addPlayer: 'addPlayer',
+      setEmptyPlayers: 'setEmptyPlayers',
     }),
   },
 };

@@ -3,7 +3,7 @@
     <div class="column">
       <h3>Select your hero</h3>
 
-      <select @change="selectedHero($event)">
+      <select :value="heroeIdx" @change="selectedHero($event)">
         <option value selected="selected" disabled />
 
         <option v-for="hero in heroes" :key="hero.id" :value="hero">
@@ -51,15 +51,22 @@ export default {
     player() {
       return this.players[this.playerId];
     },
+
+    heroeIdx() {
+      return this.$_.findIndex(
+        this.heroes,
+        hero => hero.name === this.player.hero.name
+      );
+    },
   },
 
   methods: {
-    async selectedHero(event) {
-      await this.$store.dispatch('setHero', { event, id: this.playerId });
+    async selectedHero({ target: { value } }) {
+      await this.$store.dispatch('setHero', { value, id: this.playerId });
     },
 
-    selectedName(event) {
-      this.$store.dispatch('setName', { event, id: this.playerId });
+    selectedName({ target: { value } }) {
+      this.$store.dispatch('setName', { value, id: this.playerId });
     },
   },
 };
