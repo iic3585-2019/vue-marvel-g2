@@ -1,19 +1,14 @@
 <template>
   <div id="app">
     <div class="app__background-image" />
-
-    <AppGameView class="app__router-view" />
+    <router-view class="app__router-view"></router-view>
   </div>
 </template>
 
 <script>
-import GameView from '@/views/Game.vue';
 
 export default {
-  name: 'App',
-  components: {
-    AppGameView: GameView,
-  },
+  name: 'App'
 };
 </script>
 
