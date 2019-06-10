@@ -30,7 +30,7 @@ export default {
     };
   },
   props: {
-    playerId: String
+    playerId: Number
   },
   computed: {
     ...mapState({
@@ -39,11 +39,11 @@ export default {
     })
   },
   methods: {
-    selectedHero(event) {
-      this.$store.dispatch("setHero", { event, id: Number(this.playerId) });
+    async selectedHero(event) {
+      await this.$store.dispatch("setHero", { event, id: this.playerId });
     },
     selectedName(event) {
-      this.$store.dispatch("setName", { event, id: Number(this.playerId) });
+      this.$store.dispatch("setName", { event, id: this.playerId });
     }
   },
   components: {

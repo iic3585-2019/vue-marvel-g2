@@ -9,8 +9,8 @@
         >{{ player }}</option
       >
     </select>
-    <AppSelectHero v-for="index in players" :key="index" playerId="1" />
-    <router-link to="/heroes" tag="button">heroes</router-link>
+    <AppSelectHero v-for="index in players" :key="index" :playerId="index - 1" />
+    <router-link to="/snap" tag="button" :disabled="$store.state.playersModule.loading">heroes</router-link>
   </div>
 </template>
 

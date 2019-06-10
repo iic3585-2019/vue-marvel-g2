@@ -34,24 +34,7 @@ export default {
 
   computed: {
     ...mapState({
-      players: () => [
-        {
-          name: 'Benjamin',
-          hero: {
-            name: 'Wolverine',
-            image:
-              'https://dam.smashmexico.com.mx/wp-content/uploads/2018/11/wolverinebio_portada.gif',
-          },
-        },
-        {
-          name: 'Benjamin',
-          hero: {
-            name: 'Wolverine',
-            image:
-              'https://dam.smashmexico.com.mx/wp-content/uploads/2018/11/wolverinebio_portada.gif',
-          },
-        },
-      ],
+      players: state => state.playersModule.players,
     }),
   },
 
@@ -61,7 +44,8 @@ export default {
     },
 
     onSnapComplete() {
-      console.log('Wow');
+      console.log("ufff");
+      this.$store.dispatch('destroyHeroes');
     },
   },
 };

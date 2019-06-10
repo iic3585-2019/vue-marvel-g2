@@ -16,16 +16,5 @@ export default {
     },
   },
 
-  actions: {
-    destroyHeroes(ctx) {
-      const heroesCopy = [...ctx.state.heroes];
-      const numberDestroy = heroesCopy.length / 2;
-      for (let i = 0; i < numberDestroy; i++) {
-        const index = Math.floor(Math.random() * heroesCopy.length);
-        heroesCopy.splice(index, 1);
-      }
-
-      ctx.commit('set-heroes', { heroes: heroesCopy });
-    },
-  },
+  actions: {},
 };
