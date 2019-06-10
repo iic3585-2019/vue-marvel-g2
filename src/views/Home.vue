@@ -11,11 +11,14 @@
       >
     </select>
 
-    <AppSelectHero
-      v-for="index in players"
-      :key="index"
-      :player-id="index - 1"
-    />
+    <div class="d-flex-r d-flex-centered">
+      <AppSelectHero
+        v-for="idx in players"
+        :key="idx"
+        :player-id="idx - 1"
+        :class="{ 'margin-l-1': idx > 0 }"
+      />
+    </div>
 
     <router-link to="/snap" tag="button" :disabled="loading"
       >heroes</router-link
@@ -56,3 +59,9 @@ export default {
   },
 };
 </script>
+
+<style lang="sass">
+.home-view .select-hero
+  width: 256px
+  height: calc(256px * 1.61)
+</style>

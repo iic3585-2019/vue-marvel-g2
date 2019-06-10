@@ -30,6 +30,20 @@ export default {
   overflow: hidden
 
 .hero-card__image
+  background-color: $c-gray-1
+
+  animation: blink 1.5s infinite $easeInOutQuad
+
   +background-image
   +p-absolute(0, 0, 0, 0, 0)
+
+@keyframes blink
+  0%
+    background-color: lighten($c-gray-1, 10%)
+
+  75%
+    background-color: lighten($c-gray-1, 0%)
+
+  100%
+    background-color: lighten($c-gray-1, 10%)
 </style>

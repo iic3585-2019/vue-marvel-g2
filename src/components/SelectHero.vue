@@ -1,24 +1,26 @@
 <template>
   <div class="select-hero">
-    <div class="column">
-      <h3>Select your hero</h3>
+    <h1
+      class="select-hero__name"
+      contenteditable="true"
+      @input="selectedName($event)"
+    >
+      {{ player.name || 'Tu nombre please' }}
+    </h1>
 
-      <select :value="heroeIdx" @change="selectedHero($event)">
-        <option value selected="selected" disabled />
+    <select
+      :value="heroeIdx"
+      class="select-hero__hero"
+      @change="selectedHero($event)"
+    >
+      <option value selected="selected" disabled />
 
-        <option v-for="hero in heroes" :key="hero.id" :value="hero">
-          {{ hero }}
-        </option>
-      </select>
+      <option v-for="hero in heroes" :key="hero.id" :value="hero">{{
+        hero
+      }}</option>
+    </select>
 
-      <AppHeroCard v-if="player.hero" :hero="player.hero" />
-    </div>
-
-    <div class="column">
-      <h3>Select your name</h3>
-
-      <input @change="selectedName($event)" />
-    </div>
+    <AppHeroCard v-if="player.hero" :hero="player.hero" />
   </div>
 </template>
 
@@ -65,7 +67,7 @@ export default {
       await this.$store.dispatch('setHero', { value, id: this.playerId });
     },
 
-    selectedName({ target: { value } }) {
+    selectedName({ target: { innerText: value } }) {
       this.$store.dispatch('setName', { value, id: this.playerId });
     },
   },
@@ -73,7 +75,28 @@ export default {
 </script>
 
 <style lang="sass">
-.select-hero .hero-card
-  width: 256px
-  height: calc(256px * 1.61)
+.select-hero
+  position: relative
+
+  .hero-card
+    width: 256px
+    height: calc(256px * 1.61)
+
+    +p-absolute(0, 0, 0, 0, 0)
+
+.select-hero__name
+  font-weight: normal
+  text-align: center
+  color: $c-white
+
+  padding-right: 1rem
+  padding-left: 1rem
+
+  background-color: rgba(0, 0, 0, .5)
+
+  +p-relative(1)
+
+.select-hero__hero
+  position: relative
+  z-index: 99
 </style>
